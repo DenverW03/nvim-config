@@ -166,7 +166,6 @@ matching = { disallow_symbol_nonprefix_matching = false }
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 require('lspconfig')['clangd'].setup {
     capabilities = capabilities
 }
@@ -187,4 +186,9 @@ require('lspconfig')['cssls'].setup {
 }
 require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
+}
+
+-- Not using MASON, dart comes with the LSP
+require'lspconfig'.dartls.setup{ 
+  cmd = { "dart", 'language-server', '--protocol=lsp' }, 
 }
